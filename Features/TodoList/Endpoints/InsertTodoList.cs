@@ -20,6 +20,14 @@ public class InsertTodoList : IEndpoint
         }
     }
 
+    public class TodoListProfile : Profile
+    {
+        public TodoListProfile()
+        {
+            CreateMap<InsertTodoRequest, Domain.Entities.TodoList>();
+        }
+    }
+
     private static async Task<Ok<ResultResponse>> HandleAsync(
         [FromBody] InsertTodoRequest request,
         TodoContext todoContext,
