@@ -1,6 +1,6 @@
 ﻿namespace MinAPI.Demo.Features.TodoList.Endpoints;
 
-public class GetByQueryString : IEndpoint
+public class GetTodoListByQueryString : IEndpoint
 {
     public static void Map(IEndpointRouteBuilder endpoint) => endpoint.MapGet("/GetByQueryString", HandleAsync);
     public record QueryTodoListRequest(Guid? TodoId, string? Name);
