@@ -19,8 +19,11 @@ public partial class TodoContext : DbContext
     {
         modelBuilder.Entity<TodoList>(entity =>
         {
-            entity.HasNoKey();
+            entity.HasKey(e => e.TodoId);
 
+            entity.Property(e => e.TodoId)
+                .HasDefaultValueSql("(newid())")
+                .HasComment("PK");
             entity.Property(e => e.AddTime)
                 .HasComment("新增時間")
                 .HasColumnType("datetime");
@@ -44,9 +47,6 @@ public partial class TodoContext : DbContext
                 .IsRequired()
                 .HasMaxLength(500)
                 .HasComment("完成事項內容");
-            entity.Property(e => e.TodoId)
-                .HasDefaultValueSql("(newid())")
-                .HasComment("PK");
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -7,6 +7,9 @@ var config = builder.Configuration;
 builder.Services.AddDbContext<TodoContext>(options => options.UseSqlServer(config.GetConnectionString("Todo")));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+// AutoMapper
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

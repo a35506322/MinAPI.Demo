@@ -3,7 +3,7 @@
 public class GetTodoListByQueryString : IEndpoint
 {
     public static void Map(IEndpointRouteBuilder endpoint) => endpoint.MapGet("/GetByQueryString", HandleAsync);
-    public record QueryTodoListRequest(Guid? TodoId, string? Name);
+    private record QueryTodoListRequest(Guid? TodoId, string? Name);
 
     private static async Task<Ok<ResultResponse<List<Domain.Entities.TodoList>>>> HandleAsync(
         [AsParameters] QueryTodoListRequest request,
