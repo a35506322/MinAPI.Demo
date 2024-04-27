@@ -2,8 +2,24 @@
 
 public class InsertTodoList : IEndpoint
 {
-    public static void Map(IEndpointRouteBuilder endpoint) => endpoint.MapPost("/insert", HandleAsync);
+    public static void Map(IEndpointRouteBuilder endpoint) =>
+        endpoint.MapPost("/insert", HandleAsync)
+        .WithRequestValidation<InsertTodoRequest>();
+
     public record InsertTodoRequest(string Name, string Title, string TodoContent);
+    public class RequestValidator : AbstractValidator<InsertTodoRequest>
+    {
+        public RequestValidator()
+        {
+            RuleFor(x => x.Name)
+                .NotEmpty().WithMessage("姓名必輸");
+            RuleFor(x => x.Title)
+                .NotEmpty().WithMessage("標題必輸");
+            RuleFor(x => x.TodoContent)
+               .NotEmpty().WithMessage("完成事項內容必輸");
+        }
+    }
+
     private static async Task<Ok<ResultResponse>> HandleAsync(
         [FromBody] InsertTodoRequest request,
         TodoContext todoContext,

@@ -6,3 +6,4 @@ global using MinAPI.Demo.Domain.Entities;
 global using MinAPI.Demo.Domain.Response;
 global using Microsoft.EntityFrameworkCore;
 global using AutoMapper;
+global using FluentValidation;

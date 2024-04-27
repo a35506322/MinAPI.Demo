@@ -1,3 +1,5 @@
+using FluentValidation;
+
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
 
@@ -9,6 +11,9 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 // AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+// FluentValidation
+builder.Services.AddValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
