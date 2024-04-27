@@ -9,8 +9,6 @@ public static class FluentValidationConfigure
 {
     public static void FluentValidationSetting(this IServiceCollection services)
     {
-        // 改小駝峰
-        ValidatorOptions.Global.PropertyNameResolver = (a, b, c) => b.Name.ToCamelCase();
         // FluentValidation
         services.AddValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
         // https://github.com/SharpGrip/FluentValidation.AutoValidation
@@ -26,6 +24,10 @@ public class CustomResultFactory : IFluentValidationAutoValidationResultFactory
 {
     public IResult CreateResult(EndpointFilterInvocationContext context, ValidationResult validationResult)
     {
-        return TypedResults.BadRequest(ResponseFactory.VaildErrorResponse(validationResult.ToValidationProblemErrors()));
+        var errors = validationResult.ToValidationProblemErrors()
+            .Select(x => new { key = x.Key.ToCamelCase(), value = x.Value })
+            .ToDictionary(x => x.key, x => x.value);
+
+        return TypedResults.BadRequest(ResponseFactory.VaildErrorResponse(errors));
     }
 }
