@@ -3,15 +3,7 @@
 public class InsertTodoList : IEndpoint
 {
     public static void Map(IEndpointRouteBuilder endpoint) => endpoint.MapPost("/insert", HandleAsync);
-    private record InsertTodoRequest(string Name, string Title, string TodoContent);
-    public class AutoMapper : Profile
-    {
-        public AutoMapper()
-        {
-            CreateMap<InsertTodoRequest, Domain.Entities.TodoList>();
-        }
-    }
-
+    public record InsertTodoRequest(string Name, string Title, string TodoContent);
     private static async Task<Ok<ResultResponse>> HandleAsync(
         [FromBody] InsertTodoRequest request,
         TodoContext todoContext,
