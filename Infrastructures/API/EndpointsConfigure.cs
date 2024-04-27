@@ -9,7 +9,8 @@ public static class EndpointsConfigure
 
         endpoints.MapGroup("/todolist")
                 .MapEndpoint<GetTodoListByQueryString>()
-                 .MapEndpoint<InsertTodoList>();
+                 .MapEndpoint<InsertTodoList>()
+                 .MapEndpoint<InsertTodoLists>();
     }
 
     private static IEndpointRouteBuilder MapEndpoint<TEndpoint>(this IEndpointRouteBuilder app) where TEndpoint : IEndpoint
