@@ -4,7 +4,7 @@ public class InsertTodoList : IEndpoint
 {
     public static void Map(IEndpointRouteBuilder endpoint) =>
         endpoint.MapPost("/insert", HandleAsync)
-        .WithRequestValidation<InsertTodoRequest>();
+        .AddFluentValidationAutoValidation();
 
     public record InsertTodoRequest(string Name, string Title, string TodoContent);
     public class RequestValidator : AbstractValidator<InsertTodoRequest>
