@@ -1,4 +1,6 @@
-﻿namespace MinAPI.Demo.Infrastructures.API;
+﻿using MinAPI.Demo.Features.TodoList.Endpoints;
+
+namespace MinAPI.Demo.Infrastructures.API;
 public static class EndpointsConfigure
 {
     public static void MapEndpoint(this WebApplication app)

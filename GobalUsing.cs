@@ -4,4 +4,4 @@ global using MinAPI.Demo.Domain.Enums;
 global using Microsoft.AspNetCore.Http.HttpResults;
 global using MinAPI.Demo.Domain.Entities;
 global using MinAPI.Demo.Domain.Response;
-global using MinAPI.Demo.Features.TodoList.Endpoints;
+global using Microsoft.EntityFrameworkCore;
