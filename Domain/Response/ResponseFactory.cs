@@ -11,4 +11,6 @@ public class ResponseFactory
     public static ResultResponse UpdateVaildErrorResponse(string id) => new ResultResponse(ReturnMessage: $"驗證失敗，此{id}有誤");
 
     public static ResultResponse<IDictionary<string, string[]>> VaildErrorResponse(IDictionary<string, string[]> errors) => new ResultResponse<IDictionary<string, string[]>>(ReturnCode: ReturnCodeEnum.VaildDataError, ReturnMessage: "驗證失敗", ReturnData: errors);
+
+    public static ResultResponse<ProblemDetails> ServerErrorResponse(ProblemDetails errors) => new ResultResponse<ProblemDetails>(ReturnCode: ReturnCodeEnum.ServerError, ReturnMessage: "意外狀況", ReturnData: errors);
 }

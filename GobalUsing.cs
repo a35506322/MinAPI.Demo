@@ -9,3 +9,4 @@ global using AutoMapper;
 global using FluentValidation;
 global using SharpGrip.FluentValidation.AutoValidation.Endpoints.Extensions;
 global using MinAPI.Demo.Infrastructures.FluentValidation;
+global using MinAPI.Demo.Infrastructures.ExceptionHandler;
