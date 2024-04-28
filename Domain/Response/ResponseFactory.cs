@@ -6,5 +6,9 @@ public class ResponseFactory
 
     public static ResultResponse InsertSuccessResponse() => new ResultResponse(ReturnMessage: "新增成功");
 
+    public static ResultResponse UpdateSuccessResponse() => new ResultResponse(ReturnMessage: "修改成功");
+
+    public static ResultResponse UpdateVaildErrorResponse(string id) => new ResultResponse(ReturnMessage: $"驗證失敗，此{id}有誤");
+
     public static ResultResponse<IDictionary<string, string[]>> VaildErrorResponse(IDictionary<string, string[]> errors) => new ResultResponse<IDictionary<string, string[]>>(ReturnCode: ReturnCodeEnum.VaildDataError, ReturnMessage: "驗證失敗", ReturnData: errors);
 }
