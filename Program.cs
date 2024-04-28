@@ -1,5 +1,6 @@
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
+var env = builder.Environment;
 
 // Add services to the container.
 
@@ -17,13 +18,20 @@ builder.Services.FluentValidationSetting();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 
+// NSwag
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.NSwagSetting(env);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
 app.UseExceptionHandler();
 
 app.UseHttpsRedirection();
+
+app.UseOpenApi(); // serve documents (same as app.UseSwagger())
+app.UseSwaggerUi(); // serve Swagger UI
+app.UseReDoc((config) => config.Path = "/redoc"); // serve ReDoc UI
 
 app.MapEndpoint();
 

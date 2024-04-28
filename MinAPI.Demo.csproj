@@ -7,6 +7,7 @@
 		<UserSecretsId>03862afc-0aba-4ec4-9720-921d117e1650</UserSecretsId>
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 		<DockerfileContext>.</DockerfileContext>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -17,9 +18,12 @@
 		<PackageReference Include="AutoMapper.Data" Version="8.0.0" />
 		<PackageReference Include="FluentValidation" Version="11.9.1" />
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.4" />
 		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.4" />
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.4" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
+		<PackageReference Include="NSwag.AspNetCore" Version="14.0.7" />
 		<PackageReference Include="SharpGrip.FluentValidation.AutoValidation.Endpoints" Version="1.4.0" />
 	</ItemGroup>
 

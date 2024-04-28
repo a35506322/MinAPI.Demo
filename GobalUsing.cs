@@ -10,3 +10,8 @@ global using FluentValidation;
 global using SharpGrip.FluentValidation.AutoValidation.Endpoints.Extensions;
 global using MinAPI.Demo.Infrastructures.FluentValidation;
 global using MinAPI.Demo.Infrastructures.ExceptionHandler;
+global using Microsoft.AspNetCore.Builder;
+global using NSwag.Generation.Processors.Security;
+global using NSwag;
+global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using MinAPI.Demo.Infrastructures.NSwag;

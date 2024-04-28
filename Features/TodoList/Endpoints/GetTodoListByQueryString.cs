@@ -2,7 +2,18 @@
 
 public class GetTodoListByQueryString : IEndpoint
 {
-    public static void Map(IEndpointRouteBuilder endpoint) => endpoint.MapGet("/GetByQueryString", HandleAsync);
+    public static void Map(IEndpointRouteBuilder endpoint)
+    {
+        endpoint.MapGet("/GetByQueryString", HandleAsync)
+        .WithOpenApi(op =>
+        {
+            op.OperationId = "GetTodoListByQueryString"; // 另一種指定作業識別碼的方式
+            op.Summary = "多筆取得Todo"; // 摘要說明
+            op.Description = "多筆取得Todo"; // 詳細說明
+            return op;
+        });
+    }
+
     private record QueryTodoListRequest(Guid? TodoId, string? Name);
 
     private static async Task<Ok<ResultResponse<List<Domain.Entities.TodoList>>>> HandleAsync(
