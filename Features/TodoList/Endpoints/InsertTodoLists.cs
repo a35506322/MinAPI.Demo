@@ -28,9 +28,9 @@ public class InsertTodoLists : IEndpoint
         }
     }
 
-    public class TodoListProfile : Profile
+    public class MapProfile : Profile
     {
-        public TodoListProfile()
+        public MapProfile()
         {
             CreateMap<InsertTodoRequest, Domain.Entities.TodoList>();
         }
