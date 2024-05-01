@@ -13,4 +13,8 @@ public class ResponseFactory
     public static ResultResponse<IDictionary<string, string[]>> VaildErrorResponse(IDictionary<string, string[]> errors) => new ResultResponse<IDictionary<string, string[]>>(ReturnCode: ReturnCodeEnum.VaildDataError, ReturnMessage: "驗證失敗", ReturnData: errors);
 
     public static ResultResponse<ProblemDetails> ServerErrorResponse(ProblemDetails errors) => new ResultResponse<ProblemDetails>(ReturnCode: ReturnCodeEnum.ServerError, ReturnMessage: "意外狀況", ReturnData: errors);
+
+    public static ResultResponse<string> LoginSuccessResponse(string token) => new ResultResponse<string>(ReturnMessage: "登入成功", ReturnData: token);
+
+    public static ResultResponse LoginFailResponse() => new ResultResponse(ReturnMessage: "登入失敗");
 }

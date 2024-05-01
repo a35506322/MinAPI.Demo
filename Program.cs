@@ -13,6 +13,8 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.FluentValidationSetting();
 
+builder.Services.AddJwtAuthentication(config);
+
 // Error Handler
 // https://www.milanjovanovic.tech/blog/global-error-handling-in-aspnetcore-8?utm_source=YouTube&utm_medium=social&utm_campaign=25.03.2024#configuring-iexceptionhandler-implementations
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
@@ -32,6 +34,9 @@ app.UseHttpsRedirection();
 app.UseOpenApi(); // serve documents (same as app.UseSwagger())
 app.UseSwaggerUi(); // serve Swagger UI
 app.UseReDoc((config) => config.Path = "/redoc"); // serve ReDoc UI
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapEndpoint();
 

@@ -17,6 +17,10 @@
       {
          "Name": "[dbo].[TodoList]",
          "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserProfile]",
+         "ObjectType": 0
       }
    ],
    "UiHint": null,

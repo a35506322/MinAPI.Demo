@@ -15,6 +15,8 @@ public partial class TodoContext : DbContext
 
     public virtual DbSet<TodoList> TodoList { get; set; }
 
+    public virtual DbSet<UserProfile> UserProfile { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<TodoList>(entity =>
@@ -37,7 +39,7 @@ public partial class TodoContext : DbContext
                 .HasComment("是否完成 (Y:是 N:否)");
             entity.Property(e => e.Name)
                 .IsRequired()
-                .HasMaxLength(100)
+                .HasMaxLength(1)
                 .HasComment("姓名");
             entity.Property(e => e.Title)
                 .IsRequired()
@@ -47,6 +49,24 @@ public partial class TodoContext : DbContext
                 .IsRequired()
                 .HasMaxLength(500)
                 .HasComment("完成事項內容");
+        });
+
+        modelBuilder.Entity<UserProfile>(entity =>
+        {
+            entity.HasKey(e => e.Account);
+
+            entity.Property(e => e.Account)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasComment("帳號");
+            entity.Property(e => e.AddTime)
+                .HasComment("加入時間")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Password)
+                .IsRequired()
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasComment("密碼");
         });
 
         OnModelCreatingPartial(modelBuilder);

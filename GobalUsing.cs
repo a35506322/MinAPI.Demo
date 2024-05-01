@@ -15,3 +15,4 @@ global using NSwag.Generation.Processors.Security;
 global using NSwag;
 global using Microsoft.AspNetCore.Authentication.JwtBearer;
 global using MinAPI.Demo.Infrastructures.NSwag;
+global using MinAPI.Demo.Infrastructures.JWT;
