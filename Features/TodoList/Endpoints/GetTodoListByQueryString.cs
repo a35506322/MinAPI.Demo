@@ -9,7 +9,7 @@ public class GetTodoListByQueryString : IEndpoint
         {
             op.OperationId = "GetTodoListByQueryString"; // 另一種指定作業識別碼的方式
             op.Summary = "多筆取得Todo"; // 摘要說明
-            op.Description = "多筆取得Todo"; // 詳細說明
+            op.Description = "  ?todoId=DB38706D-3EAE-483B-8E7E-19ADA526AA34&name=7"; // 詳細說明
             return op;
         });
     }

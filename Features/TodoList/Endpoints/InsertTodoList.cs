@@ -4,8 +4,19 @@ public class InsertTodoList : IEndpoint
 {
     public static void Map(IEndpointRouteBuilder endpoint) =>
         endpoint.MapPost("/insert", HandleAsync)
-        .AddFluentValidationAutoValidation();
-
+                .WithOpenApi(op =>
+                {
+                    op.OperationId = "InsertTodoList";
+                    op.Summary = "新增Todo"; // 摘要說明
+                    return op;
+                })
+                .AddFluentValidationAutoValidation();
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="Name">姓名</param>
+    /// <param name="Title">標題</param>
+    /// <param name="TodoContent">內容</param>
     public record InsertTodoRequest(string Name, string Title, string TodoContent);
     public class RequestValidator : AbstractValidator<InsertTodoRequest>
     {
